@@ -23,11 +23,11 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 public class JobRestController {
 
     @GetMapping("/jobs")
-    public ResponseEntity<String> getJobs() {
+    public ResponseEntity<Object> getJobs() {
         String apiUrl = "http://dev3.dansmultipro.co.id/api/recruitment/positions.json";
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.getForEntity(apiUrl, String.class);
+        ResponseEntity<Object> response = restTemplate.getForEntity(apiUrl, Object.class);
 
         if (response.getStatusCode() == HttpStatus.OK) {
             return ResponseEntity.ok(response.getBody());
@@ -37,11 +37,11 @@ public class JobRestController {
     }
 
     @GetMapping("/jobs/{id}")
-    public ResponseEntity<String> getJobDetail(@PathVariable("id") String jobId) {
+    public ResponseEntity<Object> getJobDetail(@PathVariable("id") String jobId) {
         String apiUrl = "http://dev3.dansmultipro.co.id/api/recruitment/positions/" + jobId;
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.getForEntity(apiUrl, String.class);
+        ResponseEntity<Object> response = restTemplate.getForEntity(apiUrl, Object.class);
 
         if (response.getStatusCode() == HttpStatus.OK) {
             return ResponseEntity.ok(response.getBody());
